@@ -5,6 +5,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="GUI — Gestión Única Integrada. Centraliza procesos, expedientes y documentos en una sola infraestructura técnica. Lanzamiento 2026."/>
 <meta name="theme-color" content="#004cca"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formsubmit.co; form-action 'self';"/>
 <title>GUI — Gestión Única Integrada</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -81,6 +83,10 @@
         }
     </script>
 <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 4rem;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
@@ -104,20 +110,20 @@
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-outline-variant/10">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-16">
-<div class="text-2xl font-black tracking-tighter text-slate-900">GUI</div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="font-['Inter'] font-medium tracking-tight text-primary border-b-2 border-primary pb-1 transition-colors" href="#">Platform</a>
-<a class="font-['Inter'] font-medium tracking-tight text-slate-600 hover:text-primary transition-colors" href="#">Features</a>
-<a class="font-['Inter'] font-medium tracking-tight text-slate-600 hover:text-primary transition-colors" href="#">Documentation</a>
+<a href="#inicio" class="text-2xl font-black tracking-tighter text-slate-900" aria-label="GUI — ir al inicio">GUI</a>
+<nav class="hidden md:flex items-center gap-8" aria-label="Principal">
+<a class="font-['Inter'] font-medium tracking-tight text-primary border-b-2 border-primary pb-1 transition-colors" href="#inicio">Plataforma</a>
+<a class="font-['Inter'] font-medium tracking-tight text-slate-600 hover:text-primary transition-colors" href="#modulos">Módulos</a>
+<a class="font-['Inter'] font-medium tracking-tight text-slate-600 hover:text-primary transition-colors" href="#contacto">Contacto</a>
 </nav>
-<button class="bg-primary text-on-primary px-6 py-2 font-medium hover:opacity-90 transition-all uppercase tracking-widest text-xs">
-            Get Early Access
-        </button>
+<a href="#waitlist" class="bg-primary text-on-primary px-6 py-2 font-medium hover:opacity-90 transition-all uppercase tracking-widest text-xs">
+            Acceso anticipado
+        </a>
 </div>
 </header>
 <main class="pt-16">
 <!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center overflow-hidden premium-gradient">
+<section id="inicio" class="relative min-h-[90vh] flex items-center overflow-hidden premium-gradient">
 <div class="absolute inset-0 grid-pattern"></div>
 <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
 <div class="lg:col-span-8">
@@ -133,8 +139,9 @@
                 </p>
 <form id="waitlist" class="flex flex-col sm:flex-row gap-0 max-w-xl bg-white border border-outline-variant p-1 shadow-2xl" novalidate>
 <label for="email" class="sr-only">Correo electrónico institucional</label>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true"/>
 <input id="email" name="email" type="email" required autocomplete="email" class="flex-grow bg-transparent border-none focus:ring-0 px-6 py-4 text-on-surface placeholder:text-outline font-medium" placeholder="Correo electrónico institucional"/>
-<button class="bg-primary text-on-primary px-8 py-4 font-bold uppercase tracking-tighter text-sm hover:brightness-110 transition-all" type="submit">
+<button id="waitlist-submit" class="bg-primary text-on-primary px-8 py-4 font-bold uppercase tracking-tighter text-sm hover:brightness-110 transition-all disabled:opacity-60 disabled:cursor-not-allowed" type="submit">
                         Unirse a la lista 2026
                     </button>
 </form>
@@ -161,7 +168,7 @@
 </div>
 <div class="pt-6 border-t border-outline-variant/20 flex justify-between items-end">
 <div class="space-y-1">
-<div class="text-[10px] font-bold text-outline uppercase tracking-tighter">Core Latency</div>
+<div class="text-[10px] font-bold text-outline uppercase tracking-tighter">Latencia base</div>
 <div class="text-2xl font-black text-primary">0.4ms</div>
 </div>
 <span class="material-symbols-outlined text-primary/40 text-4xl" aria-hidden="true">grid_view</span>
@@ -172,7 +179,7 @@
 </div>
 </section>
 <!-- AI Modules Grid (Dark Theme Container) -->
-<section class="py-24 bg-on-background text-white relative overflow-hidden">
+<section id="modulos" class="py-24 bg-on-background text-white relative overflow-hidden">
 <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 blur-[150px] rounded-full"></div>
 <div class="max-w-7xl mx-auto px-6 relative z-10">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
@@ -181,7 +188,7 @@
 <div class="h-1 w-24 bg-primary-fixed"></div>
 </div>
 <div class="text-right">
-<span class="text-sm font-mono text-outline-variant uppercase tracking-widest">Neural Engine / v2.0.0</span>
+<span class="text-sm font-mono text-outline-variant uppercase tracking-widest">Motor Neural / v2.0.0</span>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 border border-outline/20">
@@ -229,26 +236,26 @@
 </section>
 <!-- Graphic Interlude -->
 <section class="h-80 relative bg-black overflow-hidden flex items-center">
-<img class="absolute inset-0 w-full h-full object-cover grayscale opacity-30 mix-blend-overlay" alt="Close-up de una placa de circuito de servidor con luces LED azules reflejadas en superficies metálicas de un data center." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZjy5oW4HrYNNVmKZ_XI1sU6f_fTLaDkntAHreJRvHNyYFku0NoEq5yAR66amTpyUVqkmyOG3kq_J5Cienr9RERpDv0LIAc1L480iCNHG1kanzSqRCB2z4oSCSjotrYhMQllxjsEySA-bjm32Pwpiv9AcQ5w8oY8VhGWQ-ktjBCBaQft7lSQosaCdGp-cbwwDcvD8LdViGDG0-qWjAfY-GpliXkA488UkL24F0xO0GAOvkQODbBUYNI2s87emnGjjQcMJzosK0zFU"/>
+<img class="absolute inset-0 w-full h-full object-cover grayscale opacity-30 mix-blend-overlay" alt="Placa de circuito de servidor con luces LED azules en un data center." src="./assets/interlude.png" width="512" height="512" loading="lazy" decoding="async"/>
 <div class="absolute inset-0 bg-gradient-to-b from-on-background via-transparent to-on-background"></div>
 <div class="relative w-full text-center px-6">
 <p class="text-white font-black text-4xl md:text-6xl tracking-[0.3em] uppercase opacity-60">INTEGRIDAD • POTENCIA • CONTROL</p>
-<p class="text-primary-fixed font-mono text-xs mt-4 tracking-[0.5em] uppercase">Built for 2026 Resilience</p>
+<p class="text-primary-fixed font-mono text-xs mt-4 tracking-[0.5em] uppercase">Construido para 2026</p>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full bg-on-background border-t border-outline/10 text-white">
+<footer id="contacto" class="w-full bg-on-background border-t border-outline/10 text-white">
 <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 py-16">
 <div class="mb-8 md:mb-0">
 <div class="text-2xl font-black text-white mb-2 tracking-tighter">GUI</div>
-<p class="font-['Inter'] text-[10px] tracking-widest uppercase text-outline-variant">© 2026 GUI Systems Strategic Unit. All rights reserved.</p>
+<p class="font-['Inter'] text-[10px] tracking-widest uppercase text-outline-variant">© 2026 GUI — Gestión Única Integrada. Todos los derechos reservados.</p>
 </div>
 <div class="flex flex-wrap justify-center gap-10">
-<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline-variant hover:text-white transition-colors" href="#">Privacy Policy</a>
-<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline-variant hover:text-white transition-colors" href="#">Terms of Service</a>
-<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline-variant hover:text-white transition-colors" href="#">System Status</a>
-<a class="font-['Inter'] text-xs tracking-widest uppercase text-primary-fixed font-bold border border-primary-fixed/20 px-4 py-2 hover:bg-primary-fixed/10 transition-all" href="#">Contact Secure Node</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline-variant hover:text-white transition-colors" href="#">Privacidad</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline-variant hover:text-white transition-colors" href="#">Términos</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline-variant hover:text-white transition-colors" href="#">Estado del sistema</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase text-primary-fixed font-bold border border-primary-fixed/20 px-4 py-2 hover:bg-primary-fixed/10 transition-all" href="mailto:info@gui.cl">info@gui.cl</a>
 </div>
 </div>
 </footer>
@@ -256,24 +263,50 @@
   (() => {
     const form = document.getElementById('waitlist');
     const input = document.getElementById('email');
+    const button = document.getElementById('waitlist-submit');
     const msg = document.getElementById('form-msg');
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const endpoint = 'https://formsubmit.co/ajax/info@gui.cl';
 
-    form.addEventListener('submit', (e) => {
+    const setMsg = (text, variant) => {
+      msg.textContent = text;
+      msg.className = `mt-4 text-xs font-mono uppercase tracking-widest min-h-[1rem] ${variant}`;
+    };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = input.value.trim();
 
+      if (form.querySelector('input[name="_honey"]').value) return;
+
+      const email = input.value.trim();
       if (!emailRe.test(email)) {
-        msg.textContent = '→ Email inválido';
-        msg.className = 'mt-4 text-xs font-mono uppercase tracking-widest min-h-[1rem] text-error';
+        setMsg('→ Email inválido', 'text-error');
         input.focus();
         return;
       }
 
-      // TODO: conectar al backend/ESP (ConvertKit, Loops, Resend Audiences, etc.)
-      msg.textContent = '→ Acceso reservado. Recibirás confirmación.';
-      msg.className = 'mt-4 text-xs font-mono uppercase tracking-widest min-h-[1rem] text-primary';
-      form.reset();
+      button.disabled = true;
+      setMsg('→ Enviando...', 'text-outline');
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            _subject: 'Nuevo lead waitlist GUI',
+            _template: 'table',
+            _captcha: 'false',
+          }),
+        });
+        if (!res.ok) throw new Error('request failed');
+        setMsg('→ Acceso reservado. Recibirás confirmación.', 'text-primary');
+        form.reset();
+      } catch (err) {
+        setMsg('→ Error al enviar. Reintentá en unos segundos.', 'text-error');
+      } finally {
+        button.disabled = false;
+      }
     });
   })();
 </script>
