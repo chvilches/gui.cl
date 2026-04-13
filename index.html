@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>gui.cl — En construcción</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b0f17;
+        --fg: #e6edf3;
+        --muted: #8b949e;
+        --accent: #f0b429;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        height: 100%;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: radial-gradient(ellipse at top, #131a26 0%, var(--bg) 60%);
+        color: var(--fg);
+      }
+      main {
+        min-height: 100%;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        text-align: center;
+      }
+      .card {
+        max-width: 32rem;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        color: var(--accent);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+      h1 {
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        margin: 0 0 1rem;
+        letter-spacing: -0.02em;
+      }
+      p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+      footer {
+        margin-top: 2rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <span class="badge">En construcción</span>
+        <h1>gui.cl</h1>
+        <p>Estamos trabajando en algo nuevo. Volvé pronto.</p>
+        <footer>&copy; 2026 gui.cl</footer>
+      </section>
+    </main>
+  </body>
+</html>
