@@ -3,70 +3,264 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>gui.cl — En construcción</title>
+    <meta name="description" content="gui.cl — Algo nuevo está por llegar. Sumate a la lista de espera." />
+    <meta name="theme-color" content="#0b0f17" />
+    <title>gui.cl — Coming Soon</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: {
+                DEFAULT: '#0b0f17',
+                elevated: '#131a26',
+              },
+              fg: {
+                DEFAULT: '#e6edf3',
+                muted: '#8b949e',
+              },
+              accent: {
+                DEFAULT: '#f0b429',
+                soft: '#f5c451',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+            boxShadow: {
+              glow: '0 0 60px -10px rgba(240, 180, 41, 0.35)',
+              'glow-lg': '0 0 90px -10px rgba(240, 180, 41, 0.55)',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-6px)' },
+              },
+            },
+            animation: {
+              float: 'float 6s ease-in-out infinite',
+            },
+          },
+        },
+      };
+    </script>
+
     <style>
-      :root {
-        color-scheme: dark;
-        --bg: #0b0f17;
-        --fg: #e6edf3;
-        --muted: #8b949e;
-        --accent: #f0b429;
+      html { scroll-behavior: smooth; }
+      body {
+        background:
+          radial-gradient(ellipse 80% 50% at 50% -10%, rgba(240, 180, 41, 0.14), transparent 60%),
+          radial-gradient(ellipse 60% 50% at 85% 110%, rgba(99, 102, 241, 0.08), transparent 60%),
+          #0b0f17;
       }
-      * { box-sizing: border-box; }
-      html, body {
-        margin: 0;
-        height: 100%;
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-        background: radial-gradient(ellipse at top, #131a26 0%, var(--bg) 60%);
-        color: var(--fg);
+      .grain::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.04;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
-      main {
-        min-height: 100%;
-        display: grid;
-        place-items: center;
-        padding: 2rem;
-        text-align: center;
+      .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
       }
-      .card {
-        max-width: 32rem;
+      .glass:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(240, 180, 41, 0.28);
+        box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6), 0 0 40px -20px rgba(240, 180, 41, 0.25);
       }
-      .badge {
-        display: inline-block;
-        padding: 0.35rem 0.75rem;
-        border: 1px solid var(--accent);
-        border-radius: 999px;
-        color: var(--accent);
-        font-size: 0.8rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin-bottom: 1.5rem;
+      .text-gradient {
+        background: linear-gradient(180deg, #ffffff 0%, #b8c2d0 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
-      h1 {
-        font-size: clamp(2rem, 6vw, 3.5rem);
-        margin: 0 0 1rem;
-        letter-spacing: -0.02em;
-      }
-      p {
-        color: var(--muted);
-        font-size: 1.05rem;
-        line-height: 1.6;
-        margin: 0;
-      }
-      footer {
-        margin-top: 2rem;
-        font-size: 0.85rem;
-        color: var(--muted);
+      .divider {
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
       }
     </style>
   </head>
-  <body>
-    <main>
-      <section class="card">
-        <span class="badge">En construcción</span>
-        <h1>gui.cl</h1>
-        <p>Estamos trabajando en algo nuevo. Volvé pronto.</p>
-        <footer>&copy; 2026 gui.cl</footer>
+
+  <body class="grain min-h-screen font-sans text-fg antialiased selection:bg-accent/30 selection:text-white">
+
+    <header class="relative z-10">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+        <a href="#" class="flex items-center gap-2.5 text-lg font-semibold tracking-tight" aria-label="gui.cl inicio">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-accent shadow-glow" aria-hidden="true"></span>
+          gui.cl
+        </a>
+        <span class="hidden text-xs font-medium uppercase tracking-[0.22em] text-fg-muted sm:inline">
+          Coming soon
+        </span>
+      </nav>
+    </header>
+
+    <main class="relative z-10">
+
+      <section id="hero" class="mx-auto max-w-6xl px-6 pb-20 pt-10 sm:pt-20 lg:pt-28" aria-labelledby="hero-title">
+        <div class="mx-auto max-w-3xl text-center">
+
+          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-accent backdrop-blur-sm">
+            <span class="relative flex h-1.5 w-1.5" aria-hidden="true">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70"></span>
+              <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent"></span>
+            </span>
+            En construcción · Lanzamos pronto
+          </div>
+
+          <h1 id="hero-title" class="text-gradient text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+            Una forma nueva<br class="hidden sm:block" />
+            de construir tu día.
+          </h1>
+
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
+            Estamos pensando cada detalle. Rápido, limpio, sin ruido.
+            Sumate a la lista y sé de los primeros en entrar.
+          </p>
+
+          <form id="waitlist" class="mx-auto mt-10 flex w-full max-w-md flex-col gap-3 sm:flex-row" novalidate>
+            <label for="email" class="sr-only">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder="tunombre@email.com"
+              class="h-12 flex-1 rounded-xl border border-white/10 bg-white/5 px-4 text-fg placeholder:text-fg-muted/70 backdrop-blur-sm outline-none transition duration-200 focus:border-accent/60 focus:bg-white/10 focus:ring-4 focus:ring-accent/20"
+            />
+            <button
+              type="submit"
+              class="group inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-accent px-6 font-semibold text-bg shadow-glow transition duration-200 hover:bg-accent-soft hover:shadow-glow-lg active:scale-[0.98]"
+            >
+              Sumate
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </button>
+          </form>
+
+          <p id="form-msg" class="mt-4 h-5 text-sm text-fg-muted" aria-live="polite"></p>
+
+          <p class="text-xs text-fg-muted/70">
+            Sin spam. Solo un aviso cuando abramos acceso.
+          </p>
+        </div>
       </section>
+
+      <div class="mx-auto my-6 h-px max-w-6xl divider" aria-hidden="true"></div>
+
+      <section id="features" class="mx-auto max-w-6xl px-6 py-20" aria-labelledby="features-title">
+        <header class="mx-auto mb-14 max-w-2xl text-center">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-accent">Lo que se viene</p>
+          <h2 id="features-title" class="mt-4 text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
+            Pensado hasta el último píxel.
+          </h2>
+        </header>
+
+        <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+          <li class="glass group relative overflow-hidden rounded-2xl p-6 hover:-translate-y-1">
+            <div class="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-fg">Interfaz minimalista</h3>
+            <p class="mt-2 text-sm leading-relaxed text-fg-muted">
+              Cada elemento tiene un porqué. Cero ruido, todo el foco en lo que importa.
+            </p>
+          </li>
+
+          <li class="glass group relative overflow-hidden rounded-2xl p-6 hover:-translate-y-1">
+            <div class="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-fg">Velocidad extrema</h3>
+            <p class="mt-2 text-sm leading-relaxed text-fg-muted">
+              Pensado para flows que no se detienen. Instantáneo donde antes esperabas.
+            </p>
+          </li>
+
+          <li class="glass group relative overflow-hidden rounded-2xl p-6 hover:-translate-y-1">
+            <div class="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 3v18h18" />
+                <path d="M7 15l4-4 4 4 5-6" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-fg">Datos en tiempo real</h3>
+            <p class="mt-2 text-sm leading-relaxed text-fg-muted">
+              Dashboards vivos. Decidís con información de ahora, no de ayer.
+            </p>
+          </li>
+
+          <li class="glass group relative overflow-hidden rounded-2xl p-6 hover:-translate-y-1">
+            <div class="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="6" cy="6" r="3" />
+                <circle cx="18" cy="18" r="3" />
+                <path d="M8.5 8.5L15.5 15.5" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-fg">Integraciones nativas</h3>
+            <p class="mt-2 text-sm leading-relaxed text-fg-muted">
+              Conectá tu stack sin escribir una línea. Listo desde el primer día.
+            </p>
+          </li>
+
+        </ul>
+      </section>
+
     </main>
+
+    <footer class="relative z-10 border-t border-white/5">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-fg-muted sm:flex-row">
+        <p>&copy; 2026 gui.cl — Todos los derechos reservados.</p>
+        <p class="flex items-center gap-2">
+          <span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-accent" aria-hidden="true"></span>
+          Hecho con foco desde Chile.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const form = document.getElementById('waitlist');
+        const input = document.getElementById('email');
+        const msg = document.getElementById('form-msg');
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = input.value.trim();
+
+          if (!emailRe.test(email)) {
+            msg.textContent = 'Ingresá un email válido.';
+            msg.className = 'mt-4 h-5 text-sm text-red-400';
+            input.focus();
+            return;
+          }
+
+          // TODO: conectar al backend/ESP (ConvertKit, Loops, Mailchimp, etc.)
+          msg.textContent = '¡Listo! Te avisamos cuando abramos acceso.';
+          msg.className = 'mt-4 h-5 text-sm text-accent';
+          form.reset();
+        });
+      })();
+    </script>
   </body>
 </html>
